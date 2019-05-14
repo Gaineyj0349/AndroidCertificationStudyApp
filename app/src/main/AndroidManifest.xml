@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="com.gainwise.androidcert">
+
+    <application
+            android:allowBackup="true"
+            android:icon="@mipmap/ic_launcher"
+            android:label="@string/app_name"
+            android:roundIcon="@mipmap/ic_launcher_round"
+            android:supportsRtl="true"
+            android:theme="@style/AppTheme">
+        <activity android:name=".AndroidCore.Java.NotificationsAct"
+                  android:label="Notifications Java"
+                  android:parentActivityName=".AndroidCore.AndroidCoreMain">
+        </activity>
+        <activity
+                android:name=".UserInterface.UserInterfaceMain"
+                android:label="User Interface Main"
+                android:parentActivityName=".MainActivity">
+        </activity>
+        <activity
+                android:name=".Testing.TestingMain"
+                android:label="Testing Main"
+                android:parentActivityName=".MainActivity">
+        </activity>
+        <activity
+                android:name=".Debugging.DebuggingMain"
+                android:label="Debugging Main"
+                android:parentActivityName=".MainActivity">
+        </activity>
+        <activity
+                android:name=".DataManagement.DataManagementMain"
+                android:label="Data Management Main"
+                android:parentActivityName=".MainActivity">
+        </activity>
+        <activity
+                android:name=".AndroidCore.AndroidCoreMain"
+                android:label="Android Core Main"
+                android:parentActivityName=".MainActivity">
+        </activity>
+        <activity
+                android:name=".AndroidCore.Java.ToastAndSnackBar"
+                android:label="Toast and SnackBar Java"
+                android:parentActivityName=".AndroidCore.AndroidCoreMain">
+        </activity>
+        <activity
+                android:name=".AndroidCore.Kotlin.ToastAndSnackBar"
+                android:label="Toast and SnackBar Kotlin"
+                android:parentActivityName=".AndroidCore.AndroidCoreMain">
+        </activity>
+        <activity
+                android:name=".MainActivity"
+                android:label="@string/app_name"
+                android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>
