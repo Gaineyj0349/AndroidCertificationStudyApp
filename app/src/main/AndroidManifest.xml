@@ -13,6 +13,10 @@
                   android:label="Notifications Java"
                   android:parentActivityName=".AndroidCore.AndroidCoreMain">
         </activity>
+        <activity android:name=".AndroidCore.Kotlin.NotificationsAct"
+                  android:label="Notifications Kotlin"
+                  android:parentActivityName=".AndroidCore.AndroidCoreMain">
+        </activity>
         <activity
                 android:name=".UserInterface.UserInterfaceMain"
                 android:label="User Interface Main"

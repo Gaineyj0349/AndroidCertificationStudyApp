@@ -1,6 +1,7 @@
 package com.gainwise.androidcert
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.Menu
@@ -74,7 +75,13 @@ class MainActivity : AppCompatActivity() {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         return when (item.itemId) {
-            R.id.action_settings -> true
+            R.id.githubLink -> {
+                val url = "https://github.com/Gaineyj0349/AndroidCertificationStudyApp"
+                val i = Intent(Intent.ACTION_VIEW)
+                i.data = Uri.parse(url)
+                startActivity(i)
+                true
+            }
             else -> super.onOptionsItemSelected(item)
         }
     }

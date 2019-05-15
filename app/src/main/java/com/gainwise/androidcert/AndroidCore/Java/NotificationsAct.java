@@ -10,11 +10,18 @@ import com.gainwise.androidcert.R;
 
 public class NotificationsAct extends AppCompatActivity {
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notifications);
+
+    //TODO complete
+
     }
+
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu)  {

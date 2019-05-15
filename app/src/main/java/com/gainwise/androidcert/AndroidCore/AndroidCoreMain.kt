@@ -43,6 +43,7 @@ class AndroidCoreMain : AppCompatActivity() {
                         showDialog2()
                     }
                     "Notifications"->{
+                        startActivity(Intent(this@AndroidCoreMain,com.gainwise.androidcert.AndroidCore.Kotlin.NotificationsAct::class.java))
                     }
                     "Job Scheduler"->{
                     }
