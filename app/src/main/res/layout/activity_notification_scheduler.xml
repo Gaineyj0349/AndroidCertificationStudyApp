@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".AndroidCore.Java.NotificationScheduler">
+
+
+    <TextView android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="Network Type Required"
+              android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+              android:layout_margin="4dp"
+    />
+    <RadioGroup
+            android:layout_margin="4dp"
+            android:orientation="horizontal"
+            android:id="@+id/jobschedular_networkOptions"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+        <RadioButton
+                android:text="None"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/jobschedular_noNetwork"
+                android:layout_weight="1"/>
+        <RadioButton
+                android:text="Any"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/jobschedular_anyNetwork"
+                android:layout_weight="1"/>
+        <RadioButton
+                android:text="Wifi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/jobschedular_wifiNetwork"
+                android:layout_weight="1"/>
+    </RadioGroup>
+
+
+    <LinearLayout android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:orientation="horizontal"
+                  android:layout_margin="4dp"
+    >
+        <Switch
+                android:text="Device Idle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/jobschedular_idleSwitch"
+                android:layout_weight="1"/>
+        <Switch
+                android:text="Device Charging"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/jobschedular_chargingSwitch"
+                android:layout_weight="1"/>
+    </LinearLayout>
+    <LinearLayout android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:orientation="horizontal"
+                  android:layout_margin="4dp">
+        <TextView android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:id="@+id/jobschedular_seekBarLabel"
+                  android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+                  android:text="Override Deadline:  "/>
+        <TextView android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:id="@+id/jobschedular_seekBarProgress"
+                  android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+                  android:text="Not Set"/>
+
+    </LinearLayout>
+    <SeekBar
+
+            android:max="100"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/jobschedular_seekBar"/>
+    <Button
+            android:text="Schedule Jobs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="scheduleJob"
+            android:layout_margin="4dp"/>
+    <Button
+            android:text="Cancel Jobs"
+            android:onClick="cancelJobs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"/>
+</LinearLayout>

@@ -9,13 +9,39 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-        <activity android:name=".AndroidCore.Java.NotificationsAct"
-                  android:label="Notifications Java"
-                  android:parentActivityName=".AndroidCore.AndroidCoreMain">
+        <service
+                android:name=".AndroidCore.Java.NotificationJobService"
+                android:enabled="true"
+                android:exported="true"
+                android:permission="android.permission.BIND_JOB_SERVICE">
+        </service>
+        <service
+                android:name=".AndroidCore.Kotlin.NotificationJobService"
+                android:enabled="true"
+                android:exported="true"
+                android:permission="android.permission.BIND_JOB_SERVICE">
+        </service>
+        <activity
+                android:name=".AndroidCore.Kotlin.NotificationScheduler"
+                android:label="JobScheduler Kotlin"
+                android:parentActivityName=".AndroidCore.AndroidCoreMain">
+
         </activity>
-        <activity android:name=".AndroidCore.Kotlin.NotificationsAct"
-                  android:label="Notifications Kotlin"
-                  android:parentActivityName=".AndroidCore.AndroidCoreMain">
+
+        <activity
+                android:name=".AndroidCore.Java.NotificationScheduler"
+                android:label="JobScheduler Java"
+                android:parentActivityName=".AndroidCore.AndroidCoreMain">
+        </activity>
+        <activity
+                android:name=".AndroidCore.Java.NotificationsAct"
+                android:label="Notifications Java"
+                android:parentActivityName=".AndroidCore.AndroidCoreMain">
+        </activity>
+        <activity
+                android:name=".AndroidCore.Kotlin.NotificationsAct"
+                android:label="Notifications Kotlin"
+                android:parentActivityName=".AndroidCore.AndroidCoreMain">
         </activity>
         <activity
                 android:name=".UserInterface.UserInterfaceMain"

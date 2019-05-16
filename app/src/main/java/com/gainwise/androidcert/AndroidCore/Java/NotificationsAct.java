@@ -15,6 +15,7 @@ public class NotificationsAct extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notifications);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
     //TODO complete
 

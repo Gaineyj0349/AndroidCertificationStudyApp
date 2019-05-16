@@ -3,8 +3,11 @@ package com.gainwise.androidcert.AndroidCore.Kotlin
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.PendingIntent
+import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
+import android.content.IntentFilter
+import android.graphics.BitmapFactory
 import android.graphics.Color
 import android.net.Uri
 import android.os.Bundle
@@ -13,9 +16,8 @@ import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
 import com.gainwise.androidcert.MainActivity
+import com.gainwise.androidcert.R
 import kotlinx.android.synthetic.main.activity_notifications.*
-
-
 
 
 
@@ -32,9 +34,15 @@ class NotificationsAct : AppCompatActivity() {
     like an intent.
      */
 
+
     private val PRIMARY_CHANNEL_ID = "primary_notification_channel"
     private val NOTIFICATION_ID = 0
     private lateinit var mNotifyManager: NotificationManager
+
+    private val ACTION_UPDATE_NOTIFICATION = "com.gainwise.androidcert.AndroidCore.Kotlin.ACTION_UPDATE_NOTIFICATION"
+    private val ACTION_RESET_NOTIFICATION = "com.gainwise.androidcert.AndroidCore.Kotlin.ACTION_RESET_NOTIFICATION"
+    private val mReceiver = NotificationReceiver()
+    private val mResetReceiver = NotificationReceiverCanceled()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -44,7 +52,19 @@ class NotificationsAct : AppCompatActivity() {
         createNotificationChannel()
 
         notifications_notify.setOnClickListener{sendNotification()}
+        notifications_update.setOnClickListener{updateNotification()}
+        notifications_cancel.setOnClickListener{cancelNotification()}
 
+        setNotificationButtonState(true, false, false);
+
+        registerReceiver(mReceiver, IntentFilter(ACTION_UPDATE_NOTIFICATION));
+        registerReceiver(mResetReceiver, IntentFilter(ACTION_RESET_NOTIFICATION));
+    }
+
+    fun setNotificationButtonState(isNotifyEnabled: Boolean, isUpdateEnabled: Boolean,isCancelEnabled: Boolean) {
+        notifications_notify.setEnabled(isNotifyEnabled);
+        notifications_update.setEnabled(isUpdateEnabled);
+        notifications_cancel.setEnabled(isCancelEnabled);
     }
 
     fun createNotificationChannel() {
@@ -84,8 +104,45 @@ class NotificationsAct : AppCompatActivity() {
     }
 
     fun sendNotification(){
+        val updateIntent = Intent(ACTION_UPDATE_NOTIFICATION)
+        val updatePendingIntent =
+            PendingIntent.getBroadcast(this, NOTIFICATION_ID, updateIntent, PendingIntent.FLAG_ONE_SHOT)
+
+        val resetIntent = Intent(ACTION_RESET_NOTIFICATION)
+        val resetPendingIntent = PendingIntent.getBroadcast(this, NOTIFICATION_ID,resetIntent,PendingIntent.FLAG_ONE_SHOT)
+
         val notifyBuilder = getNotificationBuilder()
+        notifyBuilder.addAction(R.drawable.ic_update, "Update Notification", updatePendingIntent);
+        notifyBuilder.setDeleteIntent(resetPendingIntent)
         mNotifyManager.notify(NOTIFICATION_ID, notifyBuilder.build())
+        setNotificationButtonState(false, true, true);
+    }
+
+    fun updateNotification(){
+        val androidImage = BitmapFactory
+            .decodeResource(resources, com.gainwise.androidcert.R.drawable.mascot_1)
+
+        val notifyBuilder = getNotificationBuilder()
+
+        val resetIntent = Intent(ACTION_RESET_NOTIFICATION)
+        val resetPendingIntent = PendingIntent.getBroadcast(this, NOTIFICATION_ID,resetIntent,PendingIntent.FLAG_ONE_SHOT)
+        notifyBuilder.setDeleteIntent(resetPendingIntent)
+
+        notifyBuilder.setStyle(
+            NotificationCompat.BigPictureStyle()
+                .bigPicture(androidImage)
+                .setBigContentTitle("Notification Updated!")
+        )
+
+
+        mNotifyManager.notify(NOTIFICATION_ID, notifyBuilder.build());
+
+        setNotificationButtonState(false, false, true);
+    }
+
+    fun cancelNotification(){
+        mNotifyManager.cancel(NOTIFICATION_ID)
+        setNotificationButtonState(true, false, false);
     }
 
 
@@ -119,4 +176,27 @@ class NotificationsAct : AppCompatActivity() {
             else -> return super.onOptionsItemSelected(item)
         }
     }
+
+    inner class NotificationReceiver : BroadcastReceiver() {
+        override fun onReceive(p0: Context?, p1: Intent?) {
+            updateNotification()
+        }
+    }
+
+    inner class NotificationReceiverCanceled : BroadcastReceiver() {
+        override fun onReceive(p0: Context?, p1: Intent?) {
+            setNotificationButtonState(true, false, false);
+        }
+    }
+
+    override fun onDestroy() {
+        unregisterReceiver(mReceiver)
+        super.onDestroy()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        setNotificationButtonState(true, false, false);
+    }
+
 }

@@ -46,6 +46,7 @@ class AndroidCoreMain : AppCompatActivity() {
                         startActivity(Intent(this@AndroidCoreMain,com.gainwise.androidcert.AndroidCore.Kotlin.NotificationsAct::class.java))
                     }
                     "Job Scheduler"->{
+                        startActivity(Intent(this@AndroidCoreMain,com.gainwise.androidcert.AndroidCore.Kotlin.NotificationScheduler::class.java))
                     }
                 }
             }
@@ -72,6 +73,7 @@ class AndroidCoreMain : AppCompatActivity() {
                         startActivity(Intent(this@AndroidCoreMain,com.gainwise.androidcert.AndroidCore.Java.NotificationsAct::class.java))
                     }
                     "Job Scheduler"->{
+                        startActivity(Intent(this@AndroidCoreMain,com.gainwise.androidcert.AndroidCore.Java.NotificationScheduler::class.java))
                     }
                 }
             }
