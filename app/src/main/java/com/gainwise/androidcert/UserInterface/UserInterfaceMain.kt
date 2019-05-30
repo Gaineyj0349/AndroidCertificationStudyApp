@@ -1,5 +1,6 @@
 package com.gainwise.androidcert.UserInterface
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.View
@@ -30,7 +31,7 @@ class UserInterfaceMain : AppCompatActivity() {
 
                 when(selection){
                     "Activities and Intents"->{
-                       
+                        startActivity(Intent(this@UserInterfaceMain, com.gainwise.androidcert.UserInterface.Kotlin.ActivitiesAndIntents1::class.java))
                     }
                     "Interactive UI"->{
                      
@@ -69,7 +70,7 @@ class UserInterfaceMain : AppCompatActivity() {
 
                 when(selection){
                     "Activities and Intents"->{
-
+                        startActivity(Intent(this@UserInterfaceMain, com.gainwise.androidcert.UserInterface.Java.ActivitiesAndIntents1::class.java))
                     }
                     "Interactive UI"->{
 

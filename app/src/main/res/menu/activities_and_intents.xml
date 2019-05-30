@@ -1,0 +1,17 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto"
+      xmlns:tools="http://schemas.android.com/tools"
+      tools:context="com.gainwise.androidcert.MainActivity">
+    <item android:id="@+id/menu_activity_docs"
+          android:title="Activity Docs"
+          android:orderInCategory="100"
+          app:showAsAction="never"/>
+    <item android:id="@+id/menu_intent_docs"
+          android:title="Intent Docs"
+          android:orderInCategory="100"
+          app:showAsAction="never"/>
+    <item android:id="@+id/menu_activiti_intent_training"
+          android:title="Training"
+          android:orderInCategory="100"
+          app:showAsAction="never"/>
+</menu>
